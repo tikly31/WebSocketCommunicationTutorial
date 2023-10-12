@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ChatAPI</string>
+    <string name="message">Message...</string>
+    <string name="send">Send</string>
+    <string name="hello_this_is_a_sample_message">Hello this is a sample message</string>
+    <string name="todo">TODO</string>
+    <string name="sender_name">Sender Name</string>
+    <string name="hello_this_is_a_sample_message_that_could_be_long_and_wrap_to_the_next_line_if_needed">Hello, this is a sample message that could be long and wrap to the next line if needed.</string>
+    <string name="user_s_name">User\'s Name</string>
+    <string name="user_s_image">User\'s Image</string>
+    <string name="name">Name</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_room">Enter room</string>
+    <string name="doto">TODO</string>
+    <string name="enter_chatbox">Enter ChatBox</string>
+</resources>
