@@ -20,6 +20,7 @@ import android.text.TextWatcher;
 import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -37,15 +38,13 @@ import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
 
 public class ChatActivity extends AppCompatActivity implements TextWatcher {
-
     private String name;
     private WebSocket webSocket;
-    String SERVER_PATH = "ws://172.20.10.11:3000";
+    String SERVER_PATH = "ws://192.168.0.124:3001";
     private EditText messageEdit;
     private View sendBtn,pickImgBtn;
     private RecyclerView recyclerView;
     private MessageAdapter messageAdapter;
-
     private ActivityResultLauncher<Intent> imagePickerLauncher;
 
 
@@ -90,6 +89,8 @@ public class ChatActivity extends AppCompatActivity implements TextWatcher {
             }
         });
         name= getIntent().getStringExtra("name").trim();
+//        TextView textView = findViewById(R.id.senderNameTxt);
+//        textView.setText(name);
         initiateSocketConnection();
 
     }
@@ -134,7 +135,6 @@ public class ChatActivity extends AppCompatActivity implements TextWatcher {
 
 
     private class SocketListener extends WebSocketListener{
-
         @Override
         public void onOpen(@NonNull WebSocket webSocket, @NonNull Response response) {
             super.onOpen(webSocket, response);
@@ -145,19 +145,14 @@ public class ChatActivity extends AppCompatActivity implements TextWatcher {
                 initializeView();
             });
         }
-
         public void onMessage(@NonNull WebSocket webSocket, @NonNull String text) {
             super.onMessage(webSocket, text);
-
             runOnUiThread(() ->{
                 try{
                     JSONObject jsonObject=new JSONObject(text);
                     jsonObject.put("isSent",false);
-
                     messageAdapter.addItem(jsonObject);
-
                     recyclerView.smoothScrollToPosition(messageAdapter.getItemCount()-1);
-
                 }catch(JSONException e){
                     e.printStackTrace();
                 }
@@ -268,3 +263,4 @@ public class ChatActivity extends AppCompatActivity implements TextWatcher {
         }
     }
 }
+

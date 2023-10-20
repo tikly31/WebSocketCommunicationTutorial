@@ -13,4 +13,5 @@
     <string name="enter_room">Enter room</string>
     <string name="doto">TODO</string>
     <string name="enter_chatbox">Enter ChatBox</string>
+    <string name="senderName">Sender Name</string>
 </resources>
